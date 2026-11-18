@@ -10,7 +10,7 @@ import networkx as nx
 import pandas as pd
 
 
-# Main storage variables
+# Main storage variables #json gagamitin
 devices = {}
 farm_data = []
 messages = []
@@ -18,8 +18,8 @@ alerts = []
 network = nx.Graph()
 
 
-# Offline JSON save files
-FARM_DATA_FILE = "farm_data.json"
+# Offline JSON save files #json
+FARM_DATA_FILE = "farm_data.json" 
 MESSAGES_FILE = "messages.json"
 ALERTS_FILE = "alerts.json"
 NETWORK_FILE = "network_data.json"
@@ -27,7 +27,7 @@ NETWORK_FILE = "network_data.json"
 
 
 
-# Helper: Finds the shortest path between two offline devices (BFS)
+# Helper: Finds the shortest path between two offline devices (BFS) #networkx gagamitin
 def bfs_communication_path(graph, start_device, target_device):
     visited = set([start_device])
     queue = deque([[start_device]])
@@ -55,7 +55,7 @@ def bfs_communication_path(graph, start_device, target_device):
 
 
 
-# Helper: Loads saved data from JSON files when the app opens
+# Helper: Loads saved data from JSON files when the app opens #os gagamitin
 def load_all_data():
     global devices, farm_data, messages, alerts, network
 
