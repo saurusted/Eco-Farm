@@ -90,7 +90,7 @@ def load_all_data():
 
 
 
-
+#pandas then return sa json
 def monitor_farm(farm_data):
     latest_record = {}
     print("\n========== FARM MONITORING ==========")
@@ -153,7 +153,7 @@ def monitor_farm(farm_data):
 
 
 
-
+#datetime
 def add_farm_data():
     print("\n--- AVAILABLE DEVICES ---")
     for dev_id, dev_name in devices.items():
@@ -238,7 +238,7 @@ def add_farm_data():
 
 
 
-
+#balik sa networkx
 def send_offline_message():
     print("\n--- AVAILABLE DEVICES ---")
     for dev_id, dev_name in devices.items():
@@ -274,7 +274,7 @@ def send_offline_message():
     else:
         print("Device not found.")
 
-
+#kasama ng send offline messages
 def view_messages():
     print("\n========== OFFLINE MESSAGES ==========")
     if len(messages) > 0:
@@ -287,7 +287,7 @@ def view_messages():
 
 
 
-
+# pag walang keywords, ilagay sa main (pero pwede rin ihiwalay)
 def view_alerts():
     print("\n========== FARM ALERTS ==========")
 
@@ -300,7 +300,7 @@ def view_alerts():
 
 
 
-
+#balik sa pandas
 def view_data_history(farm_data):
     print("\n========== FARM DATA HISTORY ==========")
 
@@ -320,7 +320,7 @@ def view_data_history(farm_data):
 
 
 
-
+#under ng uuid
 def manage_devices():
     print("\n===== MANAGE DEVICES =====")
     print("1. Add Device")
@@ -380,7 +380,7 @@ def manage_devices():
 
 
 
-
+#networkx
 def view_mesh_network():
     print("\n========== MESH NETWORK ==========")
 
@@ -421,7 +421,7 @@ def view_mesh_network():
 
 
 
-
+#json
 def save_all_data():
     with open(FARM_DATA_FILE, "w") as f:
         json.dump(farm_data, f, indent=4)
@@ -441,7 +441,6 @@ def save_all_data():
     }
     with open(NETWORK_FILE, "w") as f:
         json.dump(network_payload, f, indent=4)
-
 
 
 
