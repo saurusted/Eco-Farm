@@ -11,11 +11,11 @@ import pandas as pd                  #Organizes farm records into tables annd co
 
 
 # Main storage variables #json gagamitin
-devices = {}
-farm_data = []
-messages = []
-alerts = []
-network = nx.Graph()
+devices = {}               #Stores registered device as {device_id: device_name}
+farm_data = []             #Stores a chronological list of all sensor reading dictionaries
+messages = []              #Stores a list of all sent offline message records
+alerts = []                #Stores warnings and alerts when readings exceed safe
+network = nx.Graph()       #Initialzes an empty undirected graph for device connections
 
 
 # Offline JSON save files #json
@@ -29,31 +29,24 @@ NETWORK_FILE = "network_data.json"
 
 # Helper: Finds the shortest path between two offline devices (BFS) #networkx gagamitin
 def bfs_communication_path(graph, start_device, target_device):
-    visited = set([start_device])
-    queue = deque([[start_device]])
-
+    visited = set([start_device])       #Tracks already-checked devices to avoid infinite loops
+    queue = deque([[start_device]])     #Queue storing possible routes starting from the sender
 
     while queue:
-        path = queue.popleft()
-        current_device = path[-1]
+        path = queue.popleft()          #Removes and inspects the oldest route in the queue
+        current_device = path[-1]       #Gets the last device reached in the current route
 
-
-        if current_device == target_device:
+        if current_device == target_device:    #Stops an dreturns the route once the receiver is reached
             return path
 
-
-        for neighbor in graph.neighbors(current_device):
+        for neighbor in graph.neighbors(current_device):    #Checks all directly connected devices
             if neighbor not in visited:
-                visited.add(neighbor)
-                new_path = list(path)
-                new_path.append(neighbor)
-                queue.append(new_path)
-
-
+                visited.add(neighbor)        #Marks neighbor as visited
+                new_path = list(path)        #Copies the current path
+                new_path.append(neighbor)    #Extends the path to include the neighbor
+                queue.append(new_path)       #Add the extemded path to the queue for further exploration
+                
     return None
-
-
-
 
 # Helper: Loads saved data from JSON files when the app opens #os gagamitin
 def load_all_data():
