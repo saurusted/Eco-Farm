@@ -1,13 +1,13 @@
-import json
-import os
-import uuid
-from collections import deque
-from datetime import datetime
+import json        #Handles reading and writing data to offline JSON files
+import os          #Checks if saved JSON files already exist on the computer
+import uuid        #Generates unique IDs for newly created devices
+from collections import deque        #Provides fast queue structure for Breadth-First Searcg(BFS)
+from datetime import datetime        #Captures the current date and time for logs and alerts
 
 
-import matplotlib.pyplot as plt
-import networkx as nx
-import pandas as pd
+import matplotlib.pyplot as plt      #Draws line charts and network topology graohs
+import networkx as nx                #Creates and manages the offline mesh network (nodes and connections)
+import pandas as pd                  #Organizes farm records into tables annd computes statistical summaries
 
 
 # Main storage variables #json gagamitin
